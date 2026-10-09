@@ -1,0 +1,37 @@
+export type MarketType = "Price" | "Risk";
+export type Side = "Yes" | "No";
+export type Market = {
+  market_id: string;
+  market_type: MarketType;
+  question: string;
+  resolution_rules: string;
+  probability_bps: string;
+  probability_history: { ts: number; value_bps: string }[];
+  total_yes_exposure: string;
+  total_no_exposure: string;
+  resolved: boolean;
+  resolution_outcome?: boolean | null;
+  resolution_ts?: number | null;
+  finalized_at?: number | null;
+  dispute_authority?: string;
+  resolution_methodology: "deadline_snapshot";
+  resolution_deadline: number;
+  metadata_uri?: string;
+  collateral_mint?: string;
+  onchain_verified?: boolean;
+  chain_status?: string;
+};
+export type AgentDecision = {
+  agent_id: number;
+  agent_name: string;
+  side: Side;
+  confidence_bps: string;
+  reasoning: string | null;
+  reasoning_verified?: boolean;
+  reasoning_hash?: string;
+  tx_signature?: string;
+  signature?: string;
+  reasoning_verification?: "verified" | "mismatch" | "missing" | "unverified";
+  ts: number;
+};
+export type DataResult<T> = { data: T; source: "api" | "demo"; error?: string };

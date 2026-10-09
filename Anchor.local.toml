@@ -1,0 +1,15 @@
+skip_local_validator = false
+
+[features]
+resolution = true
+skip-lint = false
+
+[programs.localnet]
+sentinel = "3PA87yNfZD3DptejAafT2ovehCkh3xo8DhUVQoyWTw2P"
+
+[provider]
+cluster = "localnet"
+wallet = "~/.config/solana/id.json"
+
+[scripts]
+test = "node --test tests/sentinel.test.cjs"
